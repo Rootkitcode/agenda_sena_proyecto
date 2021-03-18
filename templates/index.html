@@ -3,58 +3,18 @@
 {% block body %}
 
 
-<h1>Agenda Proyecto sena Monica y Darwin Tusarma Amigos con derechos</h1>
+<h1>Agenda Proyecto sena Monica y Darwin Tusarma </h1>
 
-<h2>Contactos</h2>
-
-{% with message = get_flashed_messages()%}
-{% if messages %}
-{% for message in messages %}
-
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  {{message}} The contact was added successfully.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="login-page">
+  <div class="form">
+    <form class="login-form">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button>login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
 </div>
-
-
-{% endfor %}
-{% endif %}
-{% endwith %}
-
-
-<form action="/add_contacts" method="POST">
-    <input  type="text" name="fullname" placeholder="Fullname">
-    <input  type="text" name="phone" placeholder="Phone">
-    <input  type="text" name="email" placeholder="E-mail">
-    <button type="submit">Guardar</button>
-
-</form>
-
-<table>
-    <thead>
-    <tr>
-        <td>Fullname</td>
-        <td>Phone</td>
-        <td>Email</td>
-        <td>Operacion</td>
-    </tr>
-    </thead>
-    <tbody>
-    {% for contact in contacts %}
-    <tr>
-        <td>{{contact.1}}</td>
-        <td>{{contact.2}}</td>
-        <td>{{contact.3}}</td>
-        <td>
-            <a href="/edit/{{contact.0}}">Editar</a>
-            <a href="/delete/{{contact.0}}">Eliminar</a>
-        </td>
-
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
 
 {% endblock %}
 
