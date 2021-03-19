@@ -39,7 +39,7 @@ def index():
     else:
         return render_template('index.html')
 
-@app.route('/register.html', methods=['GET','POST'])
+@app.route('/index.html', methods=['GET','POST'])
 def register():
     if request.method == 'GET':
 
