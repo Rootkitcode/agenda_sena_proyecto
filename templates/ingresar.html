@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+<h1>Agenda Proyecto sena Monica y Darwin Tusarma </h1>
+
+<div class="alert alert-succes">
+  <strong>Agenda</strong> <p>ADSI</p>
+</div>
+
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" action="/registrar" method="POST">
+      <input type="text" name="nameregister"  required placeholder="name"/>
+      <input type="text" name="lastnames"  required placeholder="last_name"/>
+      <input type="text" name="phoneregister"  required placeholder="phone"/>
+      <input type="text" name="ocupationregister"  required placeholder="ocupation"/>
+      <input type="text" name="ageregister"  required placeholder="age"/>
+      <input type="text" name="addresregister"  required placeholder="addres"/>
+      <input type="text" name="companynameregister"  required placeholder="company"/>
+      <input type="text" name="documentregister"  required placeholder="document"/>
+      <input type="email" name="emailregister"  required placeholder="email"/>
+      <input type="password" name="passwordregister"  required placeholder="password"/>
+      <button type="submit"> Register</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+
+    <form class="login-form" action="/ingresar" method="POST">
+      <input type="email" name="emaillogin" required placeholder="email"/>
+      <input type="password" name="passwordlogin" required placeholder="password"/>
+      <button type="submit">login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+      <!--se muestran los mensajes flash en caso de haberlos-->
+    {%with messages = get_flashed_messages(with_categories=true)%}
+    <!--se verifica si hay algun mensaje-->
+    {%if messages %}
+    <!--se constrylle un ciclo para cada mensaje-->
+    {% for category, message in messages%}
+
+    <div class="alert {{category}}" id="idMensajeError">
+      {{message}}
+    </div>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+

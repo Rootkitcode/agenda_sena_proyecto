@@ -10,7 +10,7 @@ db = pymysql.connect(
     host = 'localhost',
     user = 'root',
     password = '',
-    db = 'agenda'
+    db = 'login'
 )
 
 app = Flask(__name__)
@@ -21,37 +21,50 @@ app.secret_key = 'darwin_y_monica'
 #Generamos el encriptado
 encriptado = bcrypt.gensalt()
 
+#defino la ruta principal
+
+@app.route('/')
+
 
 def main():
     if 'name' in session:
-        #se carga el main del html
-        return render_template('page.html')
+        return render_template('inicio.html')
     else:
-        return render_template('index.html')
+
+
+        return render_template('ingresar.html')
 
 #definimos la ruta del index
-@app.route('/')
-def index():
-    #verificamos que exista la seccion del usuario
+@app.route('/inicio')
+def inicio():
     if 'name' in session:
-        return render_template('page.html')
-        #cargamos la pagina page
+        return render_template('inicio.html')
     else:
-        return render_template('index.html')
 
-@app.route('/index.html', methods=['GET','POST'])
-def register():
-    if request.method == 'GET':
+    #verificamos que exista la seccion del usuario
+
+        return render_template('ingresar.html')
+
+@app.route('/registrar', methods=['GET','POST'])
+def registrar():
+    if (request.method == 'GET'):
 
         if 'name' in session:
-            return render_template('page.html')
+            return render_template('inicio.html')
         else:        #Acceso no permitido para este usuario
-            return render_template('index.html')
+            return render_template('ingresar.html')
     else:
         #obtenemos los datos
-        name = request.form['name_register']
-        password = request.form['password_register']
-        email = request.form['email_register']
+        name = request.form['nameregister']
+        last = request.form['lastnames']
+        phone = request.form['phoneregister']
+        ocupation = request.form['ocupationregister']
+        age = request.form['ageregister']
+        addres = request.form['addresregister']
+        company = request.form['companynameregister']
+        document = request.form['documentregister']
+        email = request.form['emailregister']
+        password = request.form['passwordregister']
         password_encode = password.encode("utf-8")
         password_encript = bcrypt.hashpw(password_encode, encriptado)
 
@@ -59,33 +72,36 @@ def register():
         print('password_encode: ', password_encode)
         print('password_encript', password_encript)'''
 
-        sQuery = "INSER INTO login (name, password, email) VALUES (%s, %s, %s)"
+        sQuery = "INSERT INTO login (name, last, phone, ocupation, age, addres, company, document, email, password) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
         cursor = db.cursor()
-        cursor.execute(sQuery,(name, password_encript, email))
+        cursor.execute(sQuery,(name, last, phone, ocupation, age, addres, company,
+                               document, email, password_encript))
         cursor.connection.commit()
 
         #procedemos a registrar la sesion
         session['name'] = name
-        session['email'] = email
+        #session['email'] = email
 
-        #redirigimos a index
-        return redirect(url_for('page'))
+        #redirigimos a la pagina
+        return redirect(url_for('inicio'))
 
-@app.route('/page', methods = ['GET', 'POST'])
+    #definimos la ruta de ingresar
 
-def  page():
+@app.route('/ingresar', methods = ['GET', 'POST'])
+
+def  ingresar():
     if request.method == 'GET':
 
         if 'name' in session:
-            return render_template('page.html')
+            return render_template('inicio.html')
         else:
-            return render_template('index.html')
+            return render_template('ingresar.html')
     else:
 
         #obtengamos los datos
-        email = request.form['name']
-        password = request.form['password']
+        email = request.form['emaillogin']
+        password = request.form['passwordlogin']
         password_encode = password.encode("utf-8")
 
         #preparamos el cursor para la ejecucion
@@ -95,7 +111,7 @@ def  page():
         sQuery = "SELECT email, password, name FROM login WHERE email = %s"
 
         #ejecutamos la sentencia
-
+        cursor = db.cursor()
         cursor.execute(sQuery,[email])
 
         #obtenemos el dato
@@ -105,31 +121,31 @@ def  page():
         cursor.close()
 
         #vericamos si se obtuvieron datos
-        if (user != None):
+        if (user !=None):
             password_encript_encode = user[1].encode()
 
-
-            print('password_encode', password_encode)
-            print('password_encript_encode', password_encript_encode)
              #procedemos a verificar el password del usuario
+
             if(bcrypt.checkpw(password_encode, password_encript_encode)):
 
+                #registramos la sesion
+
                 session['name'] = user[2]
-                session['email'] = email
+                #session['email'] = email
 
                 #redirigimos al page
-                return redirect(url_for('page'))
+                return redirect(url_for('inicio'))
             else:
                 flash("Password incorrect, please try other password", "alert-warning")
 
                 #lo redirigimos al index
 
-                return render_template('index.html')
+                return render_template('ingresar.html')
         else:
 
             flash("The email don't exist, please try with othe email", "alert-warning")
 
-            return render_template('index.html')
+            return render_template('ingresar.html')
 
 
 #definimos la ruta de salida o logout
@@ -140,7 +156,9 @@ def logout():
     session.clear()
 
     #redirigimos al index
-    return redirect(url_for('index'))
+    return redirect(url_for('ingresar'))
+
+
 
 #estos parametros los vamos a utilizaar para editar el contenido de la agenda de ser necesario
 
@@ -149,7 +167,7 @@ def get_contact(id):
     cursor = db.cursor()
     cursor.execute('SELECT * FROM contact WHERE id = %s', (id))
     data = cursor.fetchall()
-    return render_template('/page.html', contact=data[0])
+    return render_template('/inicio.html', contact=data[0])
 
 
 @app.route('/update/<id>', methods=['POST'])
@@ -181,4 +199,4 @@ def delete_contacts(id):
 
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run( port = 3001, debug=True)
