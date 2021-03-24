@@ -1,0 +1,20 @@
+
+.body {
+  background: rgb(45,81,253);
+  background: linear-gradient(0deg, rgba(45,81,253,1) 0%, rgba(34,193,195,1) 0%, rgba(37,158,213,1) 56%);
+}
+.h1{
+}
+   
+.col-sm-5 {
+  background-color: black;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  border-color:#d2d2d2;
+  border-width: 5px;
+  color:white;
+  box-shadow:0 1px 0 #cfcfcf;
+}

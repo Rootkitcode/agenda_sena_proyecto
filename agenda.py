@@ -106,7 +106,7 @@ def  ingresar():
 
         #preparamos el cursor para la ejecucion
 
-        cursor = pymysql.connections.cursor()
+        #cursor = pymysql.connections.cursor()
 
         sQuery = "SELECT email, password, name FROM login WHERE email = %s"
 

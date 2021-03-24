@@ -2,35 +2,83 @@
 
 {% block body %}
 
-<h1>Agenda Proyecto sena Monica y Darwin Tusarma </h1>
+<h1>Agenda Proyecto sena Monica Ardila y Darwin Tusarma </h1>
 
 <div class="alert alert-succes">
   <strong>Agenda</strong> <p>ADSI</p>
 </div>
+<div class="login">
+  <div class="container">
+    <form  class="login-page" action="/ingresar" method="POST">
+      <div  class="col-sm-5 col-sm-offset-1">
+        <h3>Inicia sesion</h3>
+        <p class="text-muted">
+        Complete el siguiente formulario para iniciar sesion en su cuenta.
+        </p>
+        <div class="form-white">
+          <form role="form">
+            <div class="input group">
+              <input type="email" class="form-control" name="emaillogin" required placeholder="Email"/><br/>
+            </div>
+           <div class="input group">
+              <input type="password" class="form-control"  name="passwordlogin" required placeholder="Password"/><br/>
+           </div>
+          </form>
+          <button type="button" class="btn btn-primary btn-lg btn-block">Login </button><br/>
+          <hr>
+          <p class="message">Not registered? <a href="#">Create an account</a></p>
+        </div>
+      </div> 
+    </form> 
+    <br>
+  
 
-<div class="login-page">
-  <div class="form">
     <form class="register-form" action="/registrar" method="POST">
-      <input type="text" name="nameregister"  required placeholder="name"/>
-      <input type="text" name="lastnames"  required placeholder="last_name"/>
-      <input type="text" name="phoneregister"  required placeholder="phone"/>
-      <input type="text" name="ocupationregister"  required placeholder="ocupation"/>
-      <input type="text" name="ageregister"  required placeholder="age"/>
-      <input type="text" name="addresregister"  required placeholder="addres"/>
-      <input type="text" name="companynameregister"  required placeholder="company"/>
-      <input type="text" name="documentregister"  required placeholder="document"/>
-      <input type="email" name="emailregister"  required placeholder="email"/>
-      <input type="password" name="passwordregister"  required placeholder="password"/>
-      <button type="submit"> Register</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
+      <div class ="col-sm-5">
+        <h3 class="text-right-xs">Registra tu cuenta</h3>
+          <p class="text-muted">
+          Complete el siguiente formulario a continuacion para crear una nueva cuenta.
+          </p>
+          <div class="form-white">
+            <form role="form">
+              <div class="form grup">
+                <input type="text"  class="form-control" name="nameregister"  required placeholder="name"/><br/>
+              </div>
+              <div class="form grup">
+                <input type="text"  class="form-control"  name="lastnames"  required placeholder="last_name"/><br/>
+                </div>
+              <div class="form grup">
+                <input type="phoneregister" class="form-control" name="phoneregister" required placeholder="Phone"/><br/>
+              </div>
+              <div class="form grup">
+                <input type="text" class="form-control"  name="ocupationregister"  required placeholder="Ocupation"/><br/>
+              </div>
+              <div class="form grup">
+                <input type="text" class="form-control"  name="ageregister"  required placeholder="Age"/><br/>
+              </div>
+              <div class="form grup">
+                <input type="text"  class="form-control"  name="addresregister"  required placeholder="Addres"/><br/>
+              </div>
+              <div class="form grup">
+                <input type="text" class="form-control"  name="companynameregister"  required placeholder="Company"/><br/>
+              </div>
+              <div class="form grup">
+                 <input type="text"  class="form-control" name="documentregister"  required placeholder="Document"/><br/>
+              </div>
+              <div class="form grup">
+                <input type="email" class="form-control"  name="emailregister"  required placeholder="Email"/><br/>
+              </div>
+              <div class="form grup">
+                <input type="password"  class="form-control"  name="passwordregister"  required placeholder="password"/><br/>
+              </div> 
+              <button type="button" class="btn btn-primary btn-lg btn-block">Register</button><br/>
+              <hr>
+              <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </from>
+          </div>
+        </div> 
+      </form>
 
-    <form class="login-form" action="/ingresar" method="POST">
-      <input type="email" name="emaillogin" required placeholder="email"/>
-      <input type="password" name="passwordlogin" required placeholder="password"/>
-      <button type="submit">login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form>
       <!--se muestran los mensajes flash en caso de haberlos-->
     {%with messages = get_flashed_messages(with_categories=true)%}
     <!--se verifica si hay algun mensaje-->
@@ -44,11 +92,6 @@
     {%endfor%}
     {%endif%}
     {%endwith%}
-
-
-  </div>
+  </div> 
 </div>
-
 {% endblock %}
-
-
