@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th> Evento </th>
+        <th> Fecha evento </th>
+        <th> Hora del evento </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for event in events %}
+    <tr>
+        <td> {{ event.eventName }} </td>
+        <td>{{ event.eventDateTime.strftime("%b %d") }}</td>
+        <td>{{ event.eventDateTime.strftime("%H %M") }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
