@@ -1,3 +1,6 @@
+{% extends "layout.html" %}
+
+{% block body %}
 <table class="table">
     <thead>
     <tr>
@@ -10,9 +13,9 @@
     {% for event in events %}
     <tr>
         <td> {{ event.eventName }} </td>
-        <td>{{ event.eventDateTime.strftime("%b %d") }}</td>
-        <td>{{ event.eventDateTime.strftime("%H %M") }}</td>
+        <td>{{ event.eventDateTime }}</td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
+{% endblock %}

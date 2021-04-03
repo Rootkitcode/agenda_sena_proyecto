@@ -157,11 +157,11 @@ def listEvent():
         eventDateTime = request.form['eventDateTime']
 
         cursor = db.cursor()
-        sql = "INSERT INTO events (eventName, eventDataTime)"
+        sql = "INSERT INTO events (eventName, eventDateTime) VALUES (%s, %s)"
         cursor.execute(sql, (eventName, eventDateTime))
         cursor.connection.commit()
         cursor.close()
-        return render_template('inicio.html')
+        return render_template('listEvent2.html')
 
 
 @app.route('/listEvent2')
