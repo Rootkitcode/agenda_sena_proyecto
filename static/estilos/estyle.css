@@ -1,20 +1,31 @@
 
+*{
+  margin: 0px;
+  padding: 0px;
+}
 .body {
-  background: rgb(45,81,253);
-  background: linear-gradient(0deg, rgba(45,81,253,1) 0%, rgba(34,193,195,1) 0%, rgba(37,158,213,1) 56%);
+  background-image:url('https://images6.alphacoders.com/774/thumb-350-774373.jpg');
+  background-position:center;
+  background-size:cover;
+  color: #d9edf7;
 }
-.h1{
+h1{
+  color: white;
 }
-   
-.col-sm-5 {
-  background-color: black;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 15px;
-  border-color:#d2d2d2;
-  border-width: 5px;
-  color:white;
-  box-shadow:0 1px 0 #cfcfcf;
+
+.col-md-5 {
+	right: 0;
+	color: #FFF;
+	background: rgb(0,0,0.5);
+  box-shadow:0 0 25px rgb(80, 201, 238);
+	padding: 5px;
+	border-radius: 20px;
+  margin-top: 40px;
+}
+input[type=form-control] 
+{
+  border: 1px dotted rgb(0, 0, 0);
+  border-radius: 0;
+  -webkit-appearance: none;
+  
 }

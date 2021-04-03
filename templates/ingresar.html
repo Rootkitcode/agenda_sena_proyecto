@@ -10,7 +10,7 @@
 <div class="login">
   <div class="container">
     <form  class="login-page" action="/ingresar" method="POST">
-      <div  class="col-sm-5 col-sm-offset-1">
+      <div  class="col-md-5">
         <h3>Inicia sesion</h3>
         <p class="text-muted">
         Complete el siguiente formulario para iniciar sesion en su cuenta.
@@ -24,17 +24,20 @@
               <input type="password" class="form-control"  name="passwordlogin" required placeholder="Password"/><br/>
            </div>
           </form>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Remember me
+            </label>
+          </div>
           <button type="button" class="btn btn-primary btn-lg btn-block">Login </button><br/>
           <hr>
           <p class="message">Not registered? <a href="#">Create an account</a></p>
         </div>
       </div> 
     </form> 
-    <br>
-  
-
-    <form class="register-form" action="/registrar" method="POST">
-      <div class ="col-sm-5">
+  <div class="col-md-2"></div>
+  <form class="register-form" action="/registrar" method="POST">
+      <div class ="col-md-5">
         <h3 class="text-right-xs">Registra tu cuenta</h3>
           <p class="text-muted">
           Complete el siguiente formulario a continuacion para crear una nueva cuenta.
@@ -42,10 +45,10 @@
           <div class="form-white">
             <form role="form">
               <div class="form grup">
-                <input type="text"  class="form-control" name="nameregister"  required placeholder="name"/><br/>
+                <input type="text"  class="form-control" name="nameregister"  required placeholder="Name"/><br/>
               </div>
               <div class="form grup">
-                <input type="text"  class="form-control"  name="lastnames"  required placeholder="last_name"/><br/>
+                <input type="text"  class="form-control"  name="lastnames"  required placeholder="Last_name"/><br/>
                 </div>
               <div class="form grup">
                 <input type="phoneregister" class="form-control" name="phoneregister" required placeholder="Phone"/><br/>
@@ -69,15 +72,20 @@
                 <input type="email" class="form-control"  name="emailregister"  required placeholder="Email"/><br/>
               </div>
               <div class="form grup">
-                <input type="password"  class="form-control"  name="passwordregister"  required placeholder="password"/><br/>
+                <input type="password"  class="form-control"  name="passwordregister"  required placeholder="Password"/><br/>
               </div> 
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> I agree to the <a .html#">Terms of Service</a> and <a href=".html#">Privacy Policy</a>
+                </label>
+                </div>
               <button type="button" class="btn btn-primary btn-lg btn-block">Register</button><br/>
               <hr>
               <p class="message">Already registered? <a href="#">Sign In</a></p>
             </from>
           </div>
         </div> 
-      </form>
+    </form>
 
       <!--se muestran los mensajes flash en caso de haberlos-->
     {%with messages = get_flashed_messages(with_categories=true)%}
