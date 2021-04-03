@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, url_for, session
+from flask import Flask, render_template, request, flash, url_for, session, jsonify
 from werkzeug.utils import redirect
 from flask_mysqldb import MySQL
 import pymysql
@@ -148,6 +148,42 @@ def  ingresar():
             return render_template('ingresar.html')
 
 
+
+
+@app.route('/listEvent', methods = ['GET', 'POST'])
+def listEvent():
+    if request.method == 'POST':
+        eventName = request.form['eventName']
+        eventDateTime = request.form['eventDateTime']
+
+        cursor = db.cursor()
+        sql = "INSERT INTO events (eventName, eventDataTime)"
+        cursor.execute(sql, (eventName, eventDateTime))
+        cursor.connection.commit()
+        cursor.close()
+        return render_template('inicio.html')
+
+
+@app.route('/listEvent2')
+def listEvent2():
+    cursor = db.cursor()
+    sql = "SELECT * FROM events"
+    cursor.execute(sql)
+    cursor.connection.commit()
+    events = cursor.fetchall()
+    events = list(events)
+    print(events)
+    cursor.close()
+    return render_template('listEvent2.html', events = events)
+
+
+
+
+
+
+
+
+
 #definimos la ruta de salida o logout
 
 @app.route('/logout')
@@ -159,44 +195,5 @@ def logout():
     return redirect(url_for('ingresar'))
 
 
-
-#estos parametros los vamos a utilizaar para editar el contenido de la agenda de ser necesario
-
-@app.route('/edit/<id>')
-def get_contact(id):
-    cursor = db.cursor()
-    cursor.execute('SELECT * FROM contact WHERE id = %s', (id))
-    data = cursor.fetchall()
-    return render_template('/inicio.html', contact=data[0])
-
-
-@app.route('/update/<id>', methods=['POST'])
-def update(id):
-    if request.method == 'POST':
-        fullname = request.form['fullname']
-        phone = request.form['phone']
-        email = request.form['email']
-        cursor = db.cursor()
-        cursor.execute('''
-            UPDATE contact
-            SET fullname = %s,
-            email = %s,
-            phone = %s
-            WHERE id = %s
-            ''', (fullname, phone, email, id))
-        cursor.connection.commit()
-        flash('contact update succesfully')
-        return redirect(url_for('index'))
-
-
-@app.route('/delete/<string:id>')
-def delete_contacts(id):
-    cursor = db.cursor()
-    cursor.execute('DELETE FROM contact WHERE id ={0}'.format(id))
-    cursor.connection.commit()
-    flash('Contacto eliminado exitosamente')
-    return redirect(url_for('index'))
-
-
 if __name__=='__main__':
-    app.run( port = 3001, debug=True)
+    app.run(debug=True)
