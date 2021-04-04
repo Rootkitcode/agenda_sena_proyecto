@@ -157,7 +157,7 @@ def listEvent():
         eventDateTime = request.form['eventDateTime']
 
         cursor = db.cursor()
-        sql = "INSERT INTO events (eventName, eventDateTime) VALUES (%s, %s)"
+        sql = "INSERT INTO events (eventName, eventDateTime) VALUES (%s, %s);"
         cursor.execute(sql, (eventName, eventDateTime))
         cursor.connection.commit()
         cursor.close()
