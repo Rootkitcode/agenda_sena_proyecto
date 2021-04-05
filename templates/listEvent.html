@@ -1,21 +1,7 @@
-{% extends "layout.html" %}
+{% extends "list.html" %}
 
 {% block body %}
-<table class="table">
-    <thead>
-    <tr>
-        <th> Evento </th>
-        <th>Fecha de vento </th>
 
-    </tr>
-    </thead>
-    <tbody>
-    {% for event in events %}
-    <tr>
-        <td>{{event.eventName}}</td>
-        <td>{{event.eventDateTime}}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+
+
 {% endblock %}

@@ -28,7 +28,19 @@
 <h1>AGENDA ADSI 284110</h1>
 <p>En este sitio podras agendar todos tus eventos</p>
 		</div>
+{% with message = get_flashed_messages()%}
+{% if messages %}
+{% for message in messages %}
 
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{message}} La agenda fue agregada exitosamente.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+
+{% endfor %}
+{% endif %}
+{% endwith %}
 
 
 		<div class="row">
@@ -69,6 +81,8 @@
 
 	<input class="form-group" type="submit" />
 
+
+
 </form>
 
 
@@ -76,6 +90,9 @@
 
 		</script>
 	</div>
+<form action="/listEvent2" method="GET">
+	<button type="submit" class="btn btn-primary">Ver agenda programada</button>
+	</form>
 </body>
 </html>
 

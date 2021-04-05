@@ -161,7 +161,7 @@ def listEvent():
         cursor.execute(sql, (eventName, eventDateTime))
         cursor.connection.commit()
         cursor.close()
-        return render_template('listEvent2.html')
+        return render_template('inicio.html')
 
 
 @app.route('/listEvent2')
@@ -175,6 +175,50 @@ def listEvent2():
     print(events)
     cursor.close()
     return render_template('listEvent2.html', events = events)
+
+
+@app.route('/listEvent2')
+def pagina2():
+    if request.method == 'GET':
+        return render_template('listEvent2.html')
+
+
+
+
+
+@app.route('/edit/<id>')
+def get_events(id):
+    cursor = db.cursor()
+    cursor.execute('SELECT * FROM events WHERE id = %s', (id))
+    data = cursor.fetchall()
+    return  render_template('/edit.html', events = data[0])
+
+
+
+@app.route('/update/<int:id>', methods = ['GET', 'POST'])
+def update(id):
+    if request.method == 'POST':
+        eventName = request.form['eventName']
+        eventDateTime = request.form['eventDateTime']
+        cursor = db.cursor()
+        cursor.execute("UPDATE events SET eventName=%s, eventDateTime=%s, WHERE id=%s", (eventName, eventDateTime, id))
+        cursor.connection.commit()
+        cursor.close()
+        flash('event update succesfully')
+        return redirect(url_for('listEvent2'))
+
+
+@app.route('/delete/<string:id>')
+def delete_events(id):
+    cursor = db.cursor()
+    cursor.execute('DELETE FROM events WHERE id = {0}'.format(id))
+    cursor.connection.commit()
+    flash('Evento eliminado exitosamente')
+    return redirect(url_for('listEvent2'))
+
+
+
+
 
 
 
