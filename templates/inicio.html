@@ -16,10 +16,11 @@
 </head>
 <body>
 
-
+  
 	<div class="container">
-		<div>
+		<div class="col-md-5 bienvenida">
 			<h3>Bienvenidos a la agenda ADSI MONICA y DARWIN</h3>
+
 
 
 <span class="btn btn-primary">{{session['name']}}</span>
@@ -43,6 +44,16 @@
 {% endwith %}
 
 
+
+			<span class="btn btn-primary">{{session['name']}}</span>
+			<a href="/logout" class="btn btn-danger float-right" role="button" aria-pressed="true">Logout</a>
+	    </div>
+
+	
+	 <div class ="col-md-5 eventos">
+    	<h1>AGENDA ADSI 284110</h1> 
+        <p>En este sitio podras agendar todos tus eventos</p>
+
 		<div class="row">
 			<div class="span9">
 				<div id="calendar"></div>
@@ -64,8 +75,7 @@
 			</div>
 			<div class="modal-body" style="height: 400px">
 			</div>
-			<div class="modal-footer">
-				<a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+			<div class="modal-footer">    ="btn">Cerrar</a>
 			</div>
 		</div>
 <form action="/listEvent" method = "POST">
@@ -90,9 +100,12 @@
 
 		</script>
 	</div>
+
 <form action="/listEvent2" method="GET">
 	<button type="submit" class="btn btn-primary">Ver agenda programada</button>
 	</form>
+	</div>
+
 </body>
 </html>
 
