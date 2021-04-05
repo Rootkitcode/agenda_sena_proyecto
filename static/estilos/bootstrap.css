@@ -64,7 +64,6 @@ video {
 audio:not([controls]) {
   display: none;
 }
-
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
@@ -222,12 +221,13 @@ textarea {
 }
 
 body {
-  margin: 0;
+  margin: 0px;
+  background-image:url('https://image.freepik.com/foto-gratis/vista-superior-escritorio-oficina-moderno-espacio-trabajo-oficina-espacio-copia-plano_34936-2493.jpg');
+  background-position:center;
+  background-size:cover;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #333333;
-  background-color: #ffffff;
 }
 
 a {
