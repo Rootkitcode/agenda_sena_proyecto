@@ -5,34 +5,36 @@
 {% block body %}
 
 
-
-
-<table>
-    <thead>
-    <tr>
-        <td>Nombre del Evento</td>
-
-        <td>Fecha del evento</td>
+<table class="table">
+  <thead>
+    <tr class="table-light">
+      <th scope="col">Nombre Del Evento</th>
+      <th scope="col">Fecha Del Evento</th>
+        <th scope="col">Editar o elimiar </th>
 
     </tr>
-    </thead>
-    <tbody>
-    {% for event in events %}
-    <tr>
-        <td>{{event.1}}</td>
-        <td>{{event.2}}</td>
+  </thead>
+  <tbody>
+
+  {% for event in events %}
+
+
+    <tr class="table-success">
+      <th scope="row">{{event.1}}</th>
+        <td> {{event.2}} </td>
         <td>
-            <a href="/edit/{{event.0}}">Editar</a>
-            <a href="/delete/{{event.0}}">Eliminar</a>
+            <button type="button" class="btn btn-warning"> <a href="/edit/{{event.0}}">Editar</a></button>
+            <button type="button" class="btn btn-danger"><a href="/delete/{{event.0}}">Eliminar</a></button>
         </td>
+    </tr>
+  {% endfor%}
 
-        </tr>
 
-    </tbody>
-
+  </tbody>
 </table>
- {% endfor %}
+
 {% endblock %}
+
 
 
 

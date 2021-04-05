@@ -1,14 +1,17 @@
-{% extends 'layout.html'%}
+{% extends 'layout_edit.html'%}
 
 {% block body%}
 
-<h3>Bienvenidos a la vista editar agenda</h3>
+<h3>
+    <p class="lead">Bienvenidos a la vista editar agenda</p>
+</h3>
 
-
-<form action="/update/{{events.0}}" method="POST">
-    <input  type="text" name="eventName" placeholder="Nombre de evento" value="{{ events.1 }}">
-    <input  type="text" name="eventDateTime" placeholder="fecha y hora evento"  value="{{ events.2 }}">
-    <button type="submit">Guardar</button>
+<div class="container-fluid">
+    <form action="/update/{{events.0}}" method="POST">
+        <input  type="text" name="eventName" placeholder="Nombre de evento" value="{{ events.1 }}">
+        <input type="datetime-local" name="eventDateTime" id="eventDateTime" placeholder="fecha y hora evento"  value="{{ events.2 }}">
+        <button type="submit">Guardar</button>
+    </div>
 
 </form>
 {% endblock %}
