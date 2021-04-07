@@ -1,11 +1,49 @@
 
 
-{% extends "layout.html" %}
+{% extends "layout_table.html" %}
 
 {% block body %}
 
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navar-toggler-icon"></span>
+  </button>
 
-<table class="table">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+
+
+
+
+
+
+<div class="table-wrapper">
+  <!--contenido especial-->
+
+
+
+  <div class="card text-center">
+  <div class="card-header">
+    <h1>AGENDAME </h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">PLATAFORMA DE AGENDA PARA EMPRESARIOS</h5>
+    <p class="card-text">Esta plataforma esta hecha para ti, que debes llevar un intinerario de forma ordenado.</p>
+  </div>
+  <div class="card-footer text-muted">
+    Tus actividades programadas
+  </div>
+</div>
+
+<!--fin contenido especial-->
+<table class="fl-table">
   <thead>
     <tr class="table-light">
       <th scope="col">Nombre Del Evento</th>
@@ -23,8 +61,8 @@
       <th scope="row">{{event.1}}</th>
         <td> {{event.2}} </td>
         <td>
-            <button type="button" class="btn btn-warning"> <a href="/edit/{{event.0}}">Editar</a></button>
-            <button type="button" class="btn btn-danger"><a href="/delete/{{event.0}}">Eliminar</a></button>
+            <button type="button" class="btn btn-outline-info"> <a href="/edit/{{event.0}}">Editar</a></button>
+            <button type="button" class="btn btn-outline-danger"><a href="/delete/{{event.0}}">Eliminar</a></button>
         </td>
     </tr>
   {% endfor%}
@@ -32,6 +70,10 @@
 
   </tbody>
 </table>
+</div>
+
+
+
 
 {% endblock %}
 

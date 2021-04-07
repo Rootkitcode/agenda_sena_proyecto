@@ -2,15 +2,29 @@
 
 {% block body%}
 
-<h3>
-    <p class="lead">Bienvenidos a la vista editar agenda</p>
-</h3>
+<div class="container mt-4">
+    <h1 class="display-4 text-center">
+      <i class="fas fa-book-open text-primary"></i> Bienvenido<span class="text-primary">AGEN</span>DAME</h1>
+      <form id="book-form">
+        <div class="form-group">
+        </div>
+        </div>
+      </form>
+
+<div class="card text-center">
+  <div class="card-header">
+    <h1>EDITA TU AGENDA </h1>
+  </div>
+
+<br>
 
 <div class="container-fluid">
     <form action="/update/{{events.0}}" method="POST">
-        <input  type="text" name="eventName" placeholder="Nombre de evento" value="{{ events.1 }}">
-        <input type="datetime-local" name="eventDateTime" id="eventDateTime" placeholder="fecha y hora evento"  value="{{ events.2 }}">
-        <button type="submit">Guardar</button>
+        <input class="form-control" type="text" name="eventName" placeholder="Nombre de evento" value="{{ events.1 }}">
+        <br>
+        <input class="form-control" type="datetime-local" name="eventDateTime" id="eventDateTime" placeholder="fecha y hora evento"  value="{{ events.2 }}">
+        <br>
+        <button class="btn btn-primary" type="submit">Guardar</button>
     </div>
 
 </form>
