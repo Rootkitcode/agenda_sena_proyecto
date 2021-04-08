@@ -3,6 +3,7 @@
   margin: 0px;
   padding: 0px;
 }
+
 .body {
   background-image:url('https://image.freepik.com/foto-gratis/bonito-escritorio-negocios-sobre-fondo-negro_24972-1177.jpg');
   background-position:center;
@@ -12,10 +13,19 @@
 h1{
   color: white;
 }
-.nome{
-font-size: x-large;
-background: rgb(0,0,0.5);
-text-align:center;
+.titulo .nome{
+  font-size: x-large;
+  background: rgb(0,0,0.5);
+  text-align:center;
+  border-radius: 20px;
+}
+.somos{
+  font-size: x-large;
+  background: rgb(0,0,0.5);
+  text-align:center;
+  height: 80px; 
+  margin-top: 70%;
+  border-radius: 20px;
 }
 .btn {
   border: 1px solid #d15c0e;
@@ -29,5 +39,5 @@ text-align:center;
   box-shadow:0 0 25px rgb(228, 183, 88);
 	padding: 30px;
 	border-radius: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
 }

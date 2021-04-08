@@ -2,8 +2,9 @@
 
 {% block body %}
 
-<p class= "nome">Agenda Proyecto sena Monica Ardila y Darwin Tusarma </p>
-
+<div class= "titulo">
+  <p class= "nome"><img src="static/imagenes/logo.png" alt ="imagen" width='50px' height='50px'>AGENDAME.DM</p>
+</div>
 <div class="alert alert-succes">
   <strong>Agenda</strong> <p>ADSI</p>
 </div>
@@ -83,15 +84,15 @@
                 </label>
                 </div>
               <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button><br/>
-
               <hr>
-              
           </div>
         </div> 
     </form>
-
-
-
+      <p class= "somos">
+      <img src="static/imagenes/marca.jpeg" alt ="imagen" width='80px'height='80px'> 
+      Integrantes: Darwin Tusarma & Mònica Ardila
+      <img src="static/imagenes/ficha.jpeg" alt ="imagen" width='80px'height='80px'></p>
+    
       <!--se muestran los mensajes flash en caso de haberlos-->
     {%with messages = get_flashed_messages(with_categories=true)%}
     <!--se verifica si hay algun mensaje-->
@@ -105,6 +106,8 @@
     {%endfor%}
     {%endif%}
     {%endwith%}
+    
+
   </div> 
 </div>
-{% endblock %}
+{% endblock %} 

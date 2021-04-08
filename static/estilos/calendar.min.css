@@ -1,53 +1,55 @@
 .one-half{
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    align-content: center;
-    align-items: center;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
 .left{
   flex-basis: 90%;
   left: 0;
-  background: #3f2b23;
-  color: rgb(255, 255, 255);
+  background: #363331;
   padding: 30px;
-    
-    
 }
 .one-half:hover > .left:before {
   width: 100%;
-  background-color: rgb(235, 196, 88);
+  background-color: rgb(109, 103, 88);
+  color: white;
   opacity: 5;
 }
 .left:hover {
   flex-basis: 150%;
-  background: saturate($base, $strength);
-  box-shadow: 0 50vw 0 50vw rgba(0, 0, 0, 0.7);
+  background:rgb(49, 47, 47);
+  box-shadow: 0 -50vw 0 50vw rgba(0, 0, 0, 0.7);
   color: rgb(255, 255, 255);
   z-index: 500;
 }
 .right{
-    flex-basis: 90%;
-    right: 0;
-    background: rgb(195,101,34);
-    background: linear-gradient(0deg, rgba(195,101,34,1) 0%, rgba(253,184,45,1) 50%, rgba(213,113,37,1) 99%);
-    color: rgb(0, 0, 0);
-    padding: 30px;
+  flex-basis: 90%;
+  right: 0;
+  background: rgb(195,101,34);
+  background: linear-gradient(0deg, rgba(195,101,34,1) 0%, rgba(253,184,45,1) 50%, rgba(213,113,37,1) 99%);
+  color: rgb(0, 0, 0);
+  padding: 30px;
 }
-.right:hover {
+.right:hover {  
+  width: 70%;
   flex-basis: 150%;
-  background: saturate($accent, $strength);
+  background: rgb(232,131,54);
+  background: radial-gradient(circle, rgba(232,131,54,1) 0%, rgba(235,71,53,1) 100%);
   box-shadow: 0 -50vw 0 50vw rgba(0, 0, 0, 0.7);
   color: rgb(255, 255, 255);
   z-index: 800;
+  opacity: 5;
 }
 .text{
-    width: 600px;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 1s cubic-bezier(.87, .76, .33, .98);
+  width: 600px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  color: black;
+  transform: translate(-50%, -50%);
+  transition: all 1s cubic-bezier(.87, .76, .33, .98);
 }
